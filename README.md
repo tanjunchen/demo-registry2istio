@@ -1,0 +1,1 @@
+# demo-registry2istio
