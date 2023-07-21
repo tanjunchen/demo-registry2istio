@@ -1,0 +1,12 @@
+server:
+  port: 10001
+spring:
+  application:
+    name: provider-demo
+  cloud:
+    nacos:
+      discovery:
+        server-addr: nacos.mesh-operator:8848
+        #server-addr: localhost:8848
+        username: nacos
+        password: nacos

@@ -1,0 +1,1 @@
+java  -jar provider-demo-1.0-SNAPSHOT.jar

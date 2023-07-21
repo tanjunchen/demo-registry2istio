@@ -1,0 +1,49 @@
+apiVersion: networking.istio.io/v1beta1
+kind: ServiceEntry
+metadata:
+  name: provider-demo
+  labels:
+    app: provider-demo
+    registry: nacos
+spec:
+  hosts:
+    - provider-demo
+  ports:
+    - number: 80
+      protocol: HTTP
+      name: http-80
+    - number: 10001
+      protocol: HTTP
+      name: http-10001
+  resolution: STATIC
+  endpoints:
+    - address: 10.0.1.224  # pod IP
+      ports:
+        http-10001: 10001
+        http-80: 10001
+      labels:
+        app: provider-demo
+        istio-locality: gz.zoneC
+        pod-template-hash: 6f5b5f5468
+        preserved.register.source: SPRING_CLOUD
+        security.istio.io/tlsMode: istio
+        service.istio.io/canonical-name: provider-demo
+        service.istio.io/canonical-revision: v1
+        topology.istio.io/network: gz
+        version: v1
+      locality: gz/zoneC/
+    - address: 10.0.1.222  # pod IP
+      ports:
+        http-10001: 10001
+        http-80: 10001
+      labels:
+        app: provider-demo
+        istio-locality: gz.zoneC
+        pod-template-hash: 5489f5b9cb
+        preserved.register.source: SPRING_CLOUD
+        security.istio.io/tlsMode: istio
+        service.istio.io/canonical-name: provider-demo
+        service.istio.io/canonical-revision: v2
+        topology.istio.io/network: gz
+        version: v2
+      locality: gz/zoneC/

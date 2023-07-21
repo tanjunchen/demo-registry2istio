@@ -1,0 +1,30 @@
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+metadata:
+  name: test-iop
+  namespace: istio-system
+spec:
+  profile: default
+  values:
+    global:
+      istioNamespace: istio-system
+      logging:
+        level: default:info
+  meshConfig:
+    enableTracing: true
+    accessLogFile: /dev/stdout
+    configSources:
+      - address: k8s://
+      - address: xds://meshregistry.mesh-operator.svc:16010
+    accessLogFormat: "[%START_TIME%] %REQ(X-META-PROTOCOL-APPLICATION-PROTOCOL)%
+     %RESPONSE_CODE% %RESPONSE_CODE_DETAILS% %CONNECTION_TERMINATION_DETAILS% \"%UPSTREAM_TRANSPORT_FAILURE_REASON%\"
+     %BYTES_RECEIVED% %BYTES_SENT% %DURATION% \"%REQ(X-FORWARDED-FOR)%\" \"%REQ(X-REQUEST-ID)%\" %UPSTREAM_CLUSTER%
+     %UPSTREAM_LOCAL_ADDRESS% %DOWNSTREAM_LOCAL_ADDRESS% %DOWNSTREAM_REMOTE_ADDRESS% %ROUTE_NAME%\n"
+    defaultConfig:
+      holdApplicationUntilProxyStarts: true
+      proxyMetadata:
+        ISTIO_META_DNS_CAPTURE: "true"
+  components:
+    pilot:
+      hub: istio
+      tag: 1.16.5
