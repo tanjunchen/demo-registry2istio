@@ -21,7 +21,7 @@ public class ConsumerApplication {
 
     @Bean
     //@LoadBalanced
-    // 如果需要将 springcloud + http + nacos 接入 istio，则需要去除 LoadBalanced 注解
+    // 如果需要将 springcloud + http + consul 接入 istio，则需要去除 LoadBalanced 注解
     public RestTemplate restTemplate() {
         // 注入 Spring RestTemplate Bean，用于实现发送HTTP请求
         RestTemplate restTemplate = new RestTemplate();

@@ -1,12 +1,38 @@
 server:
-  port: 10001
+  port: 10001 # 端口
 spring:
   application:
-    name: provider-demo
+    name: provider-demo # 应用名称
+    # 配置Consul注册中心
   cloud:
-    nacos:
+    consul:
+      # 注册中心的访问地址
+      #host: localhost
+      host: consul
+      port: 8500
+      # 服务提供者信息
       discovery:
-        server-addr: nacos.mesh-operator:8848
-        #server-addr: localhost:8848
-        username: nacos
-        password: nacos
+        heartbeat:
+          enabled: true
+          ttl-value: 5
+          ttl-unit: s
+        tag : v1
+        # 启用服务发现
+        enabled: true
+        # 启用服务注册
+        register: true
+        # 服务停止时取消注册
+        deregister: true
+        # 表示注册时使用IP而不是hostname
+        prefer-ip-address: true
+        # 执行监控检查的频率
+        health-check-interval: 30s
+        # 设置健康检查失败多长时间后，取消注册
+        health-check-critical-timeout: 30s
+        # 服务注册标识，格式为：应用名称+服务器IP+端口
+        instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
+
+#management:
+#  endpoint:
+#    health:
+#      show-details: always

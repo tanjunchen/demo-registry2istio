@@ -7,8 +7,8 @@ spring:
   cloud:
     consul:
       # 注册中心的访问地址
-      #host: localhost
-      host: consul
+      host: localhost
+      #host: consul
       port: 8500
       # 服务提供者信息
       discovery:

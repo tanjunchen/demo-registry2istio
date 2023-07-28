@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: provider-demo
-          image: docker.io/tanjunchen/csm-nacos-mesh-provider:dev-nacos-mesh
+          image: docker.io/tanjunchen/csm-consul-mesh-provider:dev-consul-mesh
           imagePullPolicy: Always
           ports:
             - containerPort: 10001
@@ -41,7 +41,7 @@ spec:
     spec:
       containers:
         - name: provider-demo-v2
-          image: docker.io/tanjunchen/csm-nacos-mesh-provider:dev-nacos-mesh
+          image: docker.io/tanjunchen/csm-consul-mesh-provider:dev-consul-mesh
           imagePullPolicy: Always
           ports:
             - containerPort: 10001
@@ -64,7 +64,7 @@ spec:
     spec:
       containers:
         - name: consumer-demo
-          image: docker.io/tanjunchen/csm-nacos-mesh-consumer:dev-nacos-mesh
+          image: docker.io/tanjunchen/csm-consul-mesh-consumer:dev-consul-mesh
           imagePullPolicy: Always
           ports:
             - containerPort: 9999

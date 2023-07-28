@@ -4,7 +4,7 @@ metadata:
   name: provider-demo
   labels:
     app: provider-demo
-    registry: nacos
+    registry: consul
 spec:
   hosts:
     - provider-demo

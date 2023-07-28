@@ -2,8 +2,8 @@
 
 set -e
 
-#IMAGE="docker.io/tanjunchen/csm-nacos-mesh-consumer:dev"
-IMAGE="docker.io/tanjunchen/csm-nacos-mesh-consumer:dev-nacos-mesh"
+#IMAGE="docker.io/tanjunchen/csm-consul-mesh-consumer:dev"
+IMAGE="docker.io/tanjunchen/csm-consul-mesh-consumer:dev-consul-mesh"
 
 # 清理当前的应用程序
 rm -rf consumer-demo-1.0-SNAPSHOT.jar

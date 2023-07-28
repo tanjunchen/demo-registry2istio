@@ -1,14 +1,14 @@
 server:
-  port: 9999 # 端口
+  port: 10001 # 端口
 spring:
   application:
-    name: consumer-demo # 应用名称
+    name: provider-demo # 应用名称
     # 配置Consul注册中心
   cloud:
     consul:
       # 注册中心的访问地址
-      #host: localhost
-      host: consul
+      host: localhost
+      #host: consul
       port: 8500
       # 服务提供者信息
       discovery:
@@ -16,6 +16,7 @@ spring:
           enabled: true
           ttl-value: 5
           ttl-unit: s
+        tag : v1
         # 启用服务发现
         enabled: true
         # 启用服务注册
@@ -30,3 +31,8 @@ spring:
         health-check-critical-timeout: 30s
         # 服务注册标识，格式为：应用名称+服务器IP+端口
         instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
+
+#management:
+#  endpoint:
+#    health:
+#      show-details: always

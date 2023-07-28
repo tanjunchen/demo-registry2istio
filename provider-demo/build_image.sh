@@ -2,8 +2,8 @@
 
 set -e
 
-#IMAGE="docker.io/tanjunchen/csm-nacos-mesh-provider:dev"
-IMAGE="docker.io/tanjunchen/csm-nacos-mesh-provider:dev-nacos-mesh"
+#IMAGE="docker.io/tanjunchen/csm-consul-mesh-provider:dev"
+IMAGE="docker.io/tanjunchen/csm-consul-mesh-provider:dev-consul-mesh"
 
 rm -rf provider-demo-1.0-SNAPSHOT.jar
 
